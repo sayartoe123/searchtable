@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fliter Table</title>
+        <style type="text/css">
+
+            *{
+                box-sizing: border-box;
+            }
+
+            body{
+                height: 100vh;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .container{
+                width: 700px;
+                background-color: #f4f4f4;
+            }
+
+            .form-control{
+                width: 100%;
+                font-size: 16px;
+                border: 1px solid #eee;
+
+                padding: 10px;
+                margin-bottom: 10px;
+                
+            }
+
+            .form-control:focus{
+                outline: none;
+            }
+
+            #tabledata{
+                width: 100%;
+                border: 2px solid #eee;
+
+                border-collapse: collapse;
+            }
+            
+            #tabledata tr{
+                border-bottom: 2px solid #eee;
+            }
+
+            #tabledata tr:hover{
+                background-color: #eee;
+            }
+
+            
+            #tabledata th,#tabledata td{
+                text-align: left;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+
+            <h3>Customer</h3>
+
+            <input type="text" name="search" id="search" class="form-control" placeholder="Search By....."/>
+
+            <table id="tabledata">
+                <thead>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>City</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Toe Kyaw Thet</td>
+                        <td>20</td>
+                        <td>Yangon</td>
+                    </tr>
+                    <tr>
+                        <td>Mee Mee Chit</td>
+                        <td>21</td>
+                        <td>Yangon</td>
+                    </tr>
+                    <tr>
+                        <td>Phone Myat Thu</td>
+                        <td>20</td>
+                        <td>Yangon</td>
+                    </tr>
+                    <tr>
+                        <td>Thet Htet Ye Yint</td>
+                        <td>20</td>
+                        <td>Yangon</td>
+                    </tr>
+                    <tr>
+                        <td>Si Thu Aung</td>
+                        <td>20</td>
+                        <td>Bago</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+        
+
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+                $("#search").keyup(function(){
+                let getinput = $(this).val().toLowerCase();
+                //console.log(getinput);
+
+                $("#tabledata tr").filter(function(){
+                    $(this).toggle($(this).text().toLowerCase().indexOf(getinput) > -1);
+                });
+
+             
+             });
+            })
+        </script>
+    </body>
+</html>
